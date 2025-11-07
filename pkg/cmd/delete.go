@@ -2,6 +2,9 @@ package cmd
 
 import (
 	"fmt"
+	"strings"
+	"bufio"
+	"os"
 
 	"kubectl-multi/pkg/cluster"
 	"kubectl-multi/pkg/util"
@@ -100,6 +103,21 @@ func handleDeleteCommand(args []string, filename string, recursive bool, dryRun,
 	}
 	if len(clusters) == 0 {
 		return fmt.Errorf("no clusters discovered")
+	}
+
+	fmt.Println("Are you sure you want to delete these resources ?")
+	fmt.Println("Type 'yes' to confirm, or anything else to cancel.")
+	reader := bufio.NewReader(os.Stdin)
+	response, err := reader.ReadString('\n')
+
+	if err != nil {
+		return fmt.Errorf("failed to read confirmation: %v", err)
+	}
+
+	response = strings.TrimSpace(strings.ToLower(response))
+	if response != "yes" {
+		fmt.Println("Deletion cancelled...")
+		return nil
 	}
 
 	// Find current context from kubeconfig
