@@ -4,12 +4,12 @@
 ```bash
 # Step 1: Download kubectl-multi binary for windows
 
-# TAG="v0.0.2"
+# TAG="v0.0.3"
 
-curl.exe -LO "https://github.com/kubestellar/kubectl-plugin/releases/download/v0.0.2/kubectl-multi_0.0.2_windows_amd64.zip"
+curl.exe -LO "https://github.com/kubestellar/kubectl-plugin/releases/download/v0.0.3/kubectl-multi_0.0.3_windows_amd64.zip"
 
 # Step 2: Extract and install
-Expand-Archive .\kubectl-multi_0.0.2_windows_amd64.zip
+Expand-Archive .\kubectl-multi_0.0.3_windows_amd64.zip
 
 # Step 3: making a new directory for plugin 
 New-Item -ItemType Directory -Force -Path C:\kubectl-plugins
@@ -23,18 +23,18 @@ Go to Control Panel → System and Security → System → Advanced system setti
 In “System variables”, select Path, click “Edit”, then “New” and enter C:\kubectl-plugins
 
 #to test (if this command don't work at first then try restarting the powershell terminal )
-kubectl-multi.exe --help
+kubectl-multi version
 
 ```
 
 ### Downloading steps for windows (git bash)
 ```bash
 # Step 1: Download kubectl-multi binary for Windows
-# TAG="v0.0.2"
-curl -LO "https://github.com/kubestellar/kubectl-plugin/releases/download/v0.0.2/kubectl-multi_0.0.2_windows_amd64.zip"
+# TAG="v0.0.3"
+curl -LO "https://github.com/kubestellar/kubectl-plugin/releases/download/v0.0.3/kubectl-multi_0.0.3_windows_amd64.zip"
 
 # Step 2: Extract the ZIP file
-unzip kubectl-multi_0.0.2_windows_amd64.zip
+unzip kubectl-multi_0.0.3_windows_amd64.zip
 
 # Step 3: Create a new directory for plugins
 mkdir -p /c/kubectl-plugins
@@ -48,6 +48,6 @@ export PATH=$PATH:/c/kubectl-plugins
 # To make PATH permanent, add the above export line to your ~/.bashrc and restart Git Bash
 
 # Step 6: Test the plugin
-kubectl-multi.exe --help
+kubectl-multi version
 
 ```
